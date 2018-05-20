@@ -1,7 +1,9 @@
 #
 #== ジャンケンのプレイヤーを表すクラス。
 #
-class Player
+import random
+
+class Player():
   # ジャンケンの手を表す定数
   STONE = 0 # グー
   SCISSORS = 1 # チョキ
@@ -24,59 +26,46 @@ class Player
   #
   # プレイヤークラスのコンストラクタ。
   #
-  def initialize(name)
-    @name = name
-    @win_count = 0
-  end
+  def __init__(self,name):
+    self.name = name
+    self.win_count = 0
 
 
   #
   # ジャンケンの手を出す。
   #
-  def show_hand()
-    # プレイヤーの手
-    hand = 0
+  def show_hand(self):
+    hand = 0   # プレイヤーの手
 
-    # 0.0以上3.0未満の小数として乱数を得る
-    random_num = rand()* 3.0
-    if (random_num < 1.0)
-      # randomNum が 0.0以上1.0未満の場合、グー
+    random_num = random.randrange(0,2,1)
+    if random_num == 0:
       hand = STONE
-    elsif (random_num < 2.0)
-      # randomNum が 1.0以上2.0未満の場合、チョキ
+    elif random_num == 1:
       hand = SCISSORS
-    elsif (random_num < 3.0)
-      # randomNum が 2.0以上3.0未満の場合、パー
+    elif random_num == 2:
       hand = PAPER
-    end
 
     # 決定した手を戻り値として返す
     return hand
-  end
 
   #
   # 審判から勝敗を聞く。勝ったら、引数 result は true
   #
-  def notify_result(result)
+  def notify_result(self):
     if (result)
       # 勝った場合は勝ち数を加算する
-      @win_count += 1
-    end
-  end
+      win_count += 1
 
   #
   # 自分の勝った回数を答える。
   #
-  def get_win_count()
-    return @win_count
-  end
+  def get_win_count(self):
+    return win_count
 
   #
   # 自分の名前を答える。
   # 
-  def get_name()
-    return @name
-  end
+  def get_name(self):
+    return name
 
   # get_win_count(), get_name() は attr_reader :win_count :name で良い
-end
