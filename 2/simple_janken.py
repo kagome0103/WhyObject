@@ -36,15 +36,15 @@ for cnt in range(0,3):
     # ■■■■■■■■■■■■■■■■■■■■■■■■■■
     # 　(2) プレイヤー１が何を出すか決める
     # ■■■■■■■■■■■■■■■■■■■■■■■■■■
-    random_num = random.randrange(1,3,1)
+    random_num = random.randrange(0,2,1)
 
-    if random_num == 1:
+    if random_num == 0:
         player1_hand = STONE
         print("グー")
-    elif random_num == 2:
+    elif random_num == 1:
         player1_hand = SCISSORS
         print("チョキ")
-    elif random_num == 3:
+    elif random_num == 2:
         player1_hand = PAPER
         print("パー")
 
@@ -53,15 +53,15 @@ for cnt in range(0,3):
     # ■■■■■■■■■■■■■■■■■■■■■■■■■■
     # 　(3) プレイヤー２が何を出すか決める
     # ■■■■■■■■■■■■■■■■■■■■■■■■■■
-    random_num = random.randrange(1,3,1)
+    random_num = random.randrange(0,2,1)
 
-    if random_num == 1:
+    if random_num == 0:
         player2_hand = STONE
         print("グー")
-    elif random_num == 2:
+    elif random_num == 1:
         player2_hand = SCISSORS
         print("チョキ")
-    elif random_num == 3:
+    elif random_num == 2:
         player2_hand = PAPER
         print("パー")
 
