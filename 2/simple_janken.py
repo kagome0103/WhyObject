@@ -2,30 +2,28 @@
 #== オブジェクト指向を使用しないジャンケンプログラム
 #
 
+import random
 
 # ジャンケンの手を表す定数
 STONE = 0 # グー
 SCISSORS = 1 # チョキ
 PAPER = 2 # パー
-	
+
 # ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 # 　プログラムのスタートはここから
 # ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 # プレイヤー１の勝ち数
 player1_win_count = 0
-		
+
 # プレイヤー２の勝ち数
 player2_win_count = 0
 
 # プレイヤー１が出す手
 player1_hand = 0
-		
+
 # プレイヤー２が出す手
 player2_hand = 0
-
-# ジャンケンの手を決めるのに使用する乱数
-random_num = 0.0
 
 # ■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 # 　(1) プログラムが開始したことを表示する
@@ -45,26 +43,16 @@ for cnt in range(0,3):
     # ■■■■■■■■■■■■■■■■■■■■■■■■■■
     # 　(2) プレイヤー１が何を出すか決める
     # ■■■■■■■■■■■■■■■■■■■■■■■■■■
-    # 0.0以上3.0未満の小数として乱数を得る
-    random_num = rand() * 3.0
+    random_num = random.randrange(1,3,1)
 
-    if random_num < 1.0:
-        # random_num が 0.0以上1.0未満 の場合、グー
-        player1_hand= STONE
-
-        # プレイヤー１の手を表示する
+    if random_num == 1:
+        player1_hand = STONE
         print("グー")
-    elif random_num < 2.0:
-        # random_num が 1.0以上2.0未満 の場合、チョキ
-        player1_hand= SCISSORS
-
-        # プレイヤー１の手を表示する
+    elif random_num == 2:
+        player1_hand = SCISSORS
         print("チョキ")
-    elif random_num < 3.0:
-        # random_num が 2.0以上3.0未満 の場合、パー
-        player1_hand= PAPER
-
-        # プレイヤー１の手を表示する
+    elif random_num == 3:
+        player1_hand = PAPER
         print("パー")
 
     print(" vs. ")
@@ -72,39 +60,26 @@ for cnt in range(0,3):
     # ■■■■■■■■■■■■■■■■■■■■■■■■■■
     # 　(3) プレイヤー２が何を出すか決める
     # ■■■■■■■■■■■■■■■■■■■■■■■■■■
+    random_num = random.randrange(1,3,1)
 
-    # 0.0以上3.0未満の小数として乱数を得る
-    random_num = rand() * 3.0
-
-    if random_num < 1.0:
-        # random_num が 0.0以上1.0未満 の場合、グー
-        player2_hand= STONE
-
-        # プレイヤー２の手を表示する
+    if random_num == 1:
+        player2_hand = STONE
         print("グー")
-    elif random_num < 2.0:
-        # random_num が 1.0以上2.0未満 の場合、チョキ
-        player2_hand= SCISSORS
-
-        # プレイヤー２の手を表示する
+    elif random_num == 2:
+        player2_hand = SCISSORS
         print("チョキ")
-    elif random_num < 3.0:
-        # random_num が 2.0以上3.0未満 の場合、パー
-        player2_hand= PAPER
-        # プレイヤー３の手を表示する
+    elif random_num == 3:
+        player2_hand = PAPER
         print("パー")
-
-
 
     # ■■■■■■■■■■■■■■■■■■■■■■■■■■
     # 　(4) どちらが勝ちかを判定し、結果を表示する
     # ■■■■■■■■■■■■■■■■■■■■■■■■■■
 
     # プレイヤー１が勝つ場合
-    if (player1_hand== STONE && player2_hand== SCISSORS ||
-        player1_hand== SCISSORS && player2_hand== PAPER ||
-        player1_hand== PAPER && player2_hand== STONE):
-        # ジャンケンの結果を表示する
+    if (player1_hand == STONE and player2_hand == SCISSORS) or \
+       (player1_hand == SCISSORS and player2_hand == PAPER) or \
+       (player1_hand == PAPER and player2_hand == STONE):
         print("\nプレイヤー１が勝ちました！\n")
 
         # ■■■■■■■■■■■■■■■■■■■■■■■■
@@ -112,10 +87,9 @@ for cnt in range(0,3):
         # ■■■■■■■■■■■■■■■■■■■■■■■■
         player1_win_count += 1
     # プレイヤー２が勝つ場合
-    elif (player1_hand== STONE && player2_hand== PAPER ||
-        player1_hand== SCISSORS && player2_hand== STONE ||
-        player1_hand== PAPER && player2_hand== SCISSORS):
-        # ジャンケンの結果を表示する
+    elif (player1_hand == STONE and player2_hand == PAPER) or \
+         (player1_hand == SCISSORS and player2_hand == STONE) or \
+         (player1_hand == PAPER and player2_hand == SCISSORS):
         print("\nプレイヤー２が勝ちました！\n")
 
         # ■■■■■■■■■■■■■■■■■■■■■■■■
@@ -125,7 +99,6 @@ for cnt in range(0,3):
 
     # 引き分けの場合
     else:
-        # ジャンケンの結果を表示する
         print("\n引き分けです！\n")
 
 # ■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -136,13 +109,12 @@ print("【ジャンケン終了】\n")
 # プレイヤー１の勝ち数が多い時
 if player1_win_count > player2_win_count:
     # プレイヤー１の勝ちを表示する。
-    print(player1_win_count + "対" + player2_win_count + "でプレイヤー１の勝ちです！\n")
+    print(str(player1_win_count) + "対" + str(player2_win_count) + "でプレイヤー１の勝ちです！\n")
     # プレイヤー２の勝ち数が多い時
 elif player1_win_count < player2_win_count:
     # プレイヤー２の勝ちを表示する。
-    print(player1_win_count + "対" + player2_win_count + "でプレイヤー２の勝ちです！\n")
+    print(str(player1_win_count) + "対" + str(player2_win_count) + "でプレイヤー２の勝ちです！\n")
     # プレイヤー１と２の勝ち数が同じ時
 elif player1_win_count == player2_win_count:
     # 引き分けを表示する。
-    print(player1_win_count + "対" + player2_win_count + "で引き分けです！\n")
-
+    print(str(player1_win_count) + "対" + str(player2_win_count) + "で引き分けです！\n")
